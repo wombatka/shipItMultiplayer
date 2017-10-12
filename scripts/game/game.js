@@ -58,8 +58,8 @@ var fontAssets = {
     scoreTop_y: 1,
     velocity :gameProperties.screenWidth * 0.5,
 
-    scoreFontStyle:{font: '80px Arial', fill: '#FFFFFF', align: 'center'},
-    instructionsFontStyle:{font: '48px Arial', fill: '#13E8E1', align: 'center'}
+    scoreFontStyle:{font: '50px Arial', fill: '#FFFFFF', align: 'center'},
+    instructionsFontStyle:{font: '30px Arial', fill: '#13E8E1', align: 'center'}
 };
 
 var labels = {
