@@ -9,26 +9,13 @@ module.exports = (function(app, io) {
     maps: {}
   };
 
-
-  // io.on('connection', function(socket){
-  //   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-  //   socket.on('disconnect', function(){
-  //     console.log('user disconnected');
-  //   });
-  //
-  // socket.on('chat message', function(msg){
-  //   console.log('message: ' + msg);
-  //
-  //     io.emit('chat message', msg);
-  //   });
-  // });
-
   g.io.sockets.on('connection', function(socket) {
     socket.emit('connected', { id: socket.id });
-    console.log("fjsdfisdhfiuhsdiufisudhfusdgfyusdgfysd");
+    console.log("socket connection!!!!");
     var player = new Player({ id: socket.id });
     g.players.push(player);
-    console.log(player);
+    console.log("Player: " + player.id);
+    this.emit('gameUpdated:add', {player: player.id});
     socket.on('newPlayer', onNewPlayer);
   });
 

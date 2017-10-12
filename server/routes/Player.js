@@ -11,10 +11,8 @@
     this.rotation    = 0;
     this.lastUpdate = 0;
     this.mapId    = -1;
-    this.health   = 10;
     this.points   = 0;
 
-    this.lastShot = {};
   };
 
   module.exports = Player;
@@ -24,22 +22,10 @@
     this.y = data.y;
     this.xRel = data.xRel;
     this.yRel = data.yRel;
-    this.health = data.health;
     this.rotation = data.rotation;
     this.lastUpdate = data.timestamp;
   };
 
-  Player.prototype.recordShot = function(data) {
-    this.lastShot = data;
-  };
-
-  Player.prototype.addShotPoints = function(data) {
-    this.points += 10;
-  };
-
-  Player.prototype.wasHit = function() {
-    this.health -= 10;
-  };
 
   Player.prototype.joinMap = function(map) {
     this.x = 0;
@@ -64,9 +50,6 @@
     this.mapId = '';
   };
 
-  Player.prototype.isAlive = function() {
-    return this.health > 0;
-  };
 
   Player.prototype.serialize = function() {
     return {
