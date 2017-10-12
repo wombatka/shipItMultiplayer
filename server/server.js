@@ -12,22 +12,22 @@ server.listen(port, function() {
 
 // Serve the client
 var staticPath = path.join(__dirname, '../client/dist');
-// app.use(express.static(__dirname));
+app.use(express.static(__dirname));
 app.get('/', function(req, res) {
-  res.sendfile(__dirname + '/index2.html');
+  res.sendFile(__dirname + '/index2.html');
 });
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-
-socket.on('chat message', function(msg){
-  console.log('message: ' + msg);
-
-    io.emit('chat message', msg);
-  });
-});
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+//   socket.on('disconnect', function(){
+//     console.log('user disconnected');
+//   });
+//
+// socket.on('chat message', function(msg){
+//   console.log('message: ' + msg);
+//
+//     io.emit('chat message', msg);
+//   });
+// });
 
 // Handle socket.io
-//require('./routes/io.js')(app, io);
+require('./routes/io.js')(app, io);

@@ -1,5 +1,7 @@
+var Player = require('./Player.js');
 module.exports = (function(app, io) {
-
+  //console.log(io);
+  console.log('io');
   // Game data
   var g = {
     io: io,
@@ -7,12 +9,26 @@ module.exports = (function(app, io) {
     maps: {}
   };
 
-  g.io.sockets.on('connection', function onConnection(socket) {
+
+  // io.on('connection', function(socket){
+  //   console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+  //   socket.on('disconnect', function(){
+  //     console.log('user disconnected');
+  //   });
+  //
+  // socket.on('chat message', function(msg){
+  //   console.log('message: ' + msg);
+  //
+  //     io.emit('chat message', msg);
+  //   });
+  // });
+
+  g.io.sockets.on('connection', function(socket) {
     socket.emit('connected', { id: socket.id });
     console.log("fjsdfisdhfiuhsdiufisudhfusdgfyusdgfysd");
     var player = new Player({ id: socket.id });
     g.players.push(player);
-
+    console.log(player);
     socket.on('newPlayer', onNewPlayer);
   });
 
