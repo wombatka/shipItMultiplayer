@@ -17,7 +17,7 @@
     this.lastShot = {};
   };
 
-module.exports = Player;
+  module.exports = Player;
 
   Player.prototype.recordUpdate = function(data) {
     this.x = data.x;
