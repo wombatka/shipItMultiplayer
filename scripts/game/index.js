@@ -8,7 +8,7 @@ angular.module('app.game', [])
     })
    .state('game.play', {
       url: '/id',
-      template: '<div><div id="gameCanvas"></div></div>',
+      template: '<div><div id="gameDiv"></div></div>',
       controller: 'GameController'
     })
 });
