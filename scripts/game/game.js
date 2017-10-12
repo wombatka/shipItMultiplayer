@@ -66,12 +66,43 @@ var labels = {
     instructions: 'Left paddle: A to move up, Z to move down.\nRight paddle: UP and DOWN arrow keys.\n- click to start -',
     winner: 'Winner!',
 };
+var newGameBtn = {
+      font: '36px Architects Daughter',
+      align: 'left',
+      fill: '#ff69b4'
+  };
+
+
+
+
 /**======================================================LOAD GAME=============================================================================================
 
 
 
 ================================================================================================================================================================*/
 // The main state that contains our game. Think of states like pages or screens such as the splash screen, main menu, game screen, high scores, inventory, etc.
+var menuState = function(game) {
+  this.newGameBtn;
+};
+
+
+menuState.prototype ={
+    preload : function() {
+        game.add.text(game.world.centerX-60, game.world.centerY, 'New game', newGameBtn);
+
+  },
+  create : function() {
+    game.input.onDown.add(this.startGame, this);
+    //newGameBtn.events.onInputOver.add(this.overNewgame(), this);
+
+  //  game.events.onInputOut.add(outNewgame, this);
+  //  newGame.events.onInputDown.add(onNewgameDown, this);
+},
+startGame : function(){
+  game.state.start('main');
+}
+
+};
 var playState = function (game) {
     this.backgroundGraphics;
     this.ballSprite;
@@ -410,6 +441,6 @@ var game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeig
 // The first argument is the state name that will is used to switch between states
 // The second argument is the object name that will used when a state name is called
 game.state.add('main', playState);
-
+game.state.add('MainMenu', menuState);
 // We are using the 'main' state name as the argument to load our new state.
-game.state.start('main');
+game.state.start('MainMenu');
