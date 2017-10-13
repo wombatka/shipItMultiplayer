@@ -1,10 +1,14 @@
 angular.module('app.game')
-.controller('GameController', function($scope, mySocket) {
+.controller('GameController', function($scope, mySocket, $rootScope) {
   mySocket.then(function(socket) {
     console.log("?????????Socket??????????");
     console.log(socket);
     socket.on('gameUpdated:add', function(data){
       console.log(">><><><><><><><><><");
+      if ($rootScope.players.length == 2) {
+        console.log("THERES TWO OF US");
+        loadStartGameState();
+      }
     });
     socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));

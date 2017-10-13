@@ -12,6 +12,8 @@
     this.lastUpdate = 0;
     this.mapId    = -1;
     this.points   = 0;
+    this.ready   = false;
+
 
   };
 
