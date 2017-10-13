@@ -103,6 +103,22 @@ startGame : function(){
 }
 
 };
+
+var joinState = function(game) {
+  this.newGameBtn;
+};
+joinState.prototype ={
+    preload : function() {
+        game.add.text(game.world.centerX-150, game.world.centerY, 'Wait for player to join ....', newGameBtn);
+
+  },
+  create : function() {
+
+
+}
+
+};
+
 var playState = function (game) {
     this.backgroundGraphics;
     this.ballSprite;
@@ -431,20 +447,34 @@ playState.prototype = {
         game.physics.arcade.checkCollision.right = enabled;
     }
 };
-
+//LOAD WHEN 2 PLAYERS ARE IN
+window.loadStartGameState = function(){
+  game.state.add('main', playState);
+  game.state.start('main')
+};
 // Initialise the Phaser framework by creating an instance of a Phaser.Game object and assigning it to a local variable called 'game'.
 // The first two arguments are the width and the height of the canvas element. In this case 640 x 480 pixels. You can resize this in the gameProperties object above.
 // The third argument is the renderer that will be used. Phaser.AUTO is used to automatically detect whether to use the WebGL or Canvas renderer.
 // The fourth argument is 'gameDiv', which is the id of the DOM element we used above in the index.html file where the canvas element is inserted.
-window.createGame = function(scope, players, mapId, injector){
+window.createGame = function(scope, players, mapIdm, injector){
 
   game = new Phaser.Game(gameProperties.screenWidth, gameProperties.screenHeight, Phaser.AUTO, 'gameDiv');
 
 // Here we declare and add a state to the game object.
 // The first argument is the state name that will is used to switch between states
 // The second argument is the object name that will used when a state name is called
-  game.state.add('main', playState);
+
   game.state.add('MainMenu', menuState);
+  game.state.add('join', joinState);
+
+
+  game.state.start('join');
+
+
+
+
 // We are using the 'main' state name as the argument to load our new state.
-  game.state.start('MainMenu');
+
+
+
 };
