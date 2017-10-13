@@ -5,7 +5,10 @@ angular.module('app.game')
     console.log(socket);
     socket.on('gameUpdated:add', function(data){
       console.log(">><><><><><><><><><");
-    })
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
   });
 })
 .directive('gameCanvas', function($injector) {

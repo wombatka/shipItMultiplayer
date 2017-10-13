@@ -1,6 +1,6 @@
 angular.module('app.loader', [])
 .provider('ioLoader', function() {
-  this.scriptUrl = window.location.origin+'/socket.io/socket.io.js';
+  this.scriptUrl = window.location.origin+':8000/socket.io/socket.io.js';
 
   this.$get = function($window, $document, $q) {
     var defer = $q.defer(), scriptUrl = this.scriptUrl;

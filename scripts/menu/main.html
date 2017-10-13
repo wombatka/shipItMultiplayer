@@ -8,8 +8,12 @@
     ui-sref='game.play({id: ctrl.createId()})'>
     <a>Create a game</a>
   </div>
-  <ul id="messages"></ul>
-  <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
+  <ul id="messages">
+    <li ng-repeat="msg in messages">
+      {{msg}}
+    </li>
+  </ul>
+  <form ng-submit="submit()">
+    <input id="m" autocomplete="off" ng-model="text"/><button>Send</button>
   </form>
 </div>
