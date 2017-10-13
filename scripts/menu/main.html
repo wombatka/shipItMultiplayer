@@ -1,11 +1,15 @@
 <div>
-  <div class="panel play" 
+  <div class="panel play"
     ng-repeat="room in ctrl.rooms track by room.id"
     ui-sref='game.play({id: room.id})'>
     <span ng-bind="room.players.length"></span> Players
   </div>
-  <div class="panel create" 
+  <div id="createButton" class="panel create"
     ui-sref='game.play({id: ctrl.createId()})'>
     <a>Create a game</a>
   </div>
+  <ul id="messages"></ul>
+  <form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
 </div>

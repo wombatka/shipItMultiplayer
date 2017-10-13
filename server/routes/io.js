@@ -15,7 +15,7 @@ module.exports = (function(app, io) {
     var player = new Player({ id: socket.id });
     g.players.push(player);
     console.log("Player: " + player.id);
-    this.emit('gameUpdated:add', {player: player.id});
+    this.emit('gameUpdated:add', {player: player});
     socket.on('newPlayer', onNewPlayer);
   });
 
