@@ -11,10 +11,10 @@ angular.module('app.game')
     });
   });
 })
-.directive('gameCanvas', function($injector) {
+.directive('gameCanvas', function($injector, $rootScope) {
   var linkFn = function(scope, ele, attrs) {
     console.log("create game");
-    createGame(scope, scope.players, scope.mapId, $injector);
+    createGame(scope, $rootScope.players, scope.mapId, $injector);
     console.log("=============scope==============");
     console.log(scope);
     console.log("=============scope==============");
